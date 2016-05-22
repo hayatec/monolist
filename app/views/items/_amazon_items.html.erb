@@ -17,14 +17,36 @@
           </p>
         </div>
         <div class="action clearfix">
-          <%= link_to "" , ownerships_path(asin: item.get('ASIN') , type: "Want") ,
-                      :class => "want-#{item.get('ASIN')} btn-want btn btn-danger btn-sm want",
-                      :remote => true,
-                      :method => :post %>
-          <%= link_to "" , ownerships_path(asin: item.get('ASIN') , type: "Have") ,
-                      :class => "have-#{item.get('ASIN')} btn-have btn btn-warning btn-sm have",
-                      :remote => true,
-                      :method => :post %>
+
+          <% target_asin = item.get('ASIN') %>
+          <% target_item = Item.where(asin: target_asin) %>
+          
+          <%# Want btn%>
+          <% if current_user.want_items.find_by(id: target_item.ids) %>
+            <%= link_to "" , ownerships_path(asin: item.get('ASIN') , type: "Want") ,
+              :class => "want-#{item.get('ASIN')} btn-want btn btn-danger btn-sm want_it",
+              :remote => true,
+              :method => :delete %>
+          <% else %>                                
+            <%= link_to "" , ownerships_path(asin: item.get('ASIN') , type: "Want") ,
+              :class => "want-#{item.get('ASIN')} btn-want btn btn-danger btn-sm want",
+              :remote => true,
+              :method => :post %>
+          <% end %>
+          
+          <%# Have btn %>
+          <% if current_user.have_items.find_by(id: target_item.ids) %>
+            <%= link_to "" , ownerships_path(asin: item.get('ASIN') , type: "Have") ,
+              :class => "want-#{item.get('ASIN')} btn-have btn btn-warning btn-sm have_it",
+              :remote => true,
+              :method => :delete %>
+          <% else %>
+            <%= link_to "" , ownerships_path(asin: item.get('ASIN') , type: "Have") ,
+              :class => "have-#{item.get('ASIN')} btn-have btn btn-warning btn-sm have",
+              :remote => true,
+              :method => :post %>
+          <% end %>
+
         </div>
       </div>
     <% end %>
