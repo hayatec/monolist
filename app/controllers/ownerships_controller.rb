@@ -47,7 +47,6 @@ class OwnershipsController < ApplicationController
       
     end
     
-     @amazon_items = @item
 
   end
   
