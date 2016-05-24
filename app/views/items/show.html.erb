@@ -1,3 +1,13 @@
+<% content_for :title do %>
+ <title><%= @item.title %> - Monolist</title>
+<% end %>
+<% content_for :description do %>
+  <meta content="<%= @item.title %>のモノページ。<%= @item.title %> に関する情報です。この商品を欲しい人、持ってる人を表示しています。" name="description">
+<% end %>
+<% content_for :keywords do %>
+   <meta content="Monolist,<%=@item.title%>" name="keywords">
+<% end %>
+
 <div class="container">
   <div class="container-inner inner-sm clearfix">
     <div class="item-single-main">
@@ -18,15 +28,14 @@
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
           <% # TODO Haveしたユーザー一覧 %>
-          <%= @item.have_users.count %>
-
+          <%= render 'users/list_have_want', user: @item.have_users %>
         </div>
       </div>
       <div class="side-box">
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
           <% # TODO Wantしたユーザー一覧 %>
-          <%= @item.want_users.count %>
+          <%= render 'users/list_have_want', user: @item.want_users %>
         </div>
       </div>
       <div class="text-center">
