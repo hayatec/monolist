@@ -1,0 +1,16 @@
+<% content_for :title do %>
+ <title>Ranking - Monolist</title>
+<% end %>
+<% content_for :description do %>
+  <meta content="Rankingのページ" name="description">
+<% end %>
+<% content_for :keywords do %>
+   <meta content="Monolist,Want-Ranking" name="keywords">
+   <% end %>
+
+<div class="container">
+    <div class="container-inner inner-sm clearfix">
+        <h1>Want Ranking</h1>
+        <%= render 'ranking/list_want' %>
+    </div>
+</div>
