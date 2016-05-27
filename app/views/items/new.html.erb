@@ -1,3 +1,13 @@
+<% content_for :title do %>
+ <title>アイテムを追加 - Monolist</title>
+<% end %>
+<% content_for :description do %>
+  <meta content="欲しい/持っているアイテムを追加します。" name="description">
+<% end %>
+<% content_for :keywords do %>
+  <meta content="Monolist" name="keywords">
+<% end %>
+
 <div class="search">
   <%= form_tag new_item_path , method: :get do %>
     <%= text_field_tag :q , params[:q], placeholder: "キーワードを入力", required: true %>
